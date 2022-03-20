@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Login</title>
+   <link rel="stylesheet" type="text/css" href="css/style.css">
+   <link rel="icon" type="image/x-icon" href="img/logo.png">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+   <style>
+            body {
+         font-family: "Roboto Slab", serif !important;
+      }
+      a img {
+         width: 13%;
+         height: auto;
+      }
+      .nav-link {
+         color: black !important;
+      }
+      .nav-link:hover {
+         color: #0a58ca !important;
+      }
+      .navbar-light {
+         background-color: #babbbb61 !important;
+      }
+      .modal {
+         display: none;
+         position: fixed;
+         z-index: 1;
+         padding-top: 3px;
+         width: 100%;
+         overflow: auto;
+         background-color: rgb(0 0 0 / 53%);
+      }
+      .modal-content {
+         background-color: #fefefe;
+         margin: auto;
+         padding: 20px;
+         border: 1px solid #888;
+         width: 40%;
+      }
+      .close {
+         color: #aaaaaa;
+         float: right;
+         font-size: 28px;
+         font-weight: bold;
+      }
+      .close:hover,
+      .close:focus {
+         color: #000;
+         text-decoration: none;
+         cursor: pointer;
+      }
+      .m-a {
+         margin: 0 auto;
+      }
+      .cursor {
+         cursor: pointer;
+      }
+      .backgrund {
+         background-image: url("img/banner.jpg");
+         height: 550px;
+         background-position: center;
+         background-size: cover;
+         background-repeat: no-repeat;
+         box-shadow: 0px -6px 20px #0080b9f0;
+      }
+      .contain {
+         width: 100%;
+         height: 550px;
+         background-color: #0000003d;
+      }
+      .w-1 {
+         width: 100%;
+      }
+      .btn-1 {
+         letter-spacing: 3px;
+         background: #ffffff5e;
+         color: black;
+         padding: 5px 30px;
+         font-weight: bold;
+         border-radius: 8px;
+         border: 2px solid;
+         box-shadow: 0px 0px 11px #00f3ff;
+         text-decoration: none;
+      }
+      .btn-1:hover {
+         color: white;
+      }
+      .from {
+         background-image: url("img/bg.jpg");
+         background-size: cover;
+         background-position: center;
+         background-attachment: fixed;
+         height: 450px;
+      }
+      .from-flex {
+         display: flex;
+      }
+      .backtotop {
+         position: fixed;
+         right: 30px;
+         bottom: 65px;
+         opacity: 0.8;
+      }
+      .full-screen-container {
+         background-image: url('img/Loginbg.jpg');
+         padding: 51px 0;
+         width: 100%;
+         background-size: cover;
+         background-position: center;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         box-shadow: 0px 10px 20px #0080b9f0;
+      }
+      .login-container {
+         background-color: hsla(201, 100%, 6%, 0.6);
+         padding: 50px 30px;
+         /* min-width: 400px; */
+         width: 40%;
+         border-radius: 17px;
+         /* max-width: 600px;*/
+      }
+      .login-title {
+         color: #fff;
+         text-align: center;
+         margin-bottom: 40px;
+         font-size: 2.5em;
+         font-weight: normal;
+      }
+      .input-group {
+         display: flex;
+         flex-direction: column;
+         margin-bottom: 20px;
+      }
+      .input-group label {
+         color: #fff;
+         font-weight: lighter;
+         font-size: 1.5em;
+         margin-bottom: 7px;
+      }
+      .input-group input {
+         font-size: 1.5em;
+         width: 100%;
+         padding: 0.1em 0.25em;
+         background-color: hsla(201, 100%, 91%, 0.3);
+         border: 1px solid hsl(201, 100%, 6%);
+         outline: none;
+         border-radius: 5px!important;
+         color: #fff;
+         font-weight: lighter;
+      }
+      .input-group input:focus {
+         border: 1px solid hsl(201, 100%, 50%);
+      }
+      .login-button {
+         padding: 10px 30px;
+         width: 100%;
+         border-radius: 5px;
+         background: hsla(201, 100%, 50%, 0.1);
+         border: 1px solid hsl(201, 100%, 50%);
+         outline: none;
+         font-size: 1.5em;
+         color: #fff;
+         font-weight: lighter;
+         margin-top: 20px;
+         cursor: pointer;
+      }
+      .login-button:hover {
+         background-color: hsla(201, 100%, 50%, 0.3);
+      }
+      .login-button:focus {
+         background-color: hsla(201, 100%, 50%, 0.5);
+      }
+      ::placeholder {
+         color: black;
+      }
+      @media only screen and (max-width: 768px) {
+         .modal-content {
+            width: 100%;
+         }
+         .w-85 {
+            width: 80%;
+            margin: 0;
+            padding: 0;
+         }
+         .w-28 {
+            width: 26%;
+         }
+         .navbar-nav {
+            align-items: center;
+         }
+         .login-container {
+            width: 90%;
+         }
+         .comapny {
+            flex-direction: column;
+         }
+         .pt {
+            padding-top: 0px!important;
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <!-- navbar start -->
+   <nav class="navbar navbar-expand-lg navbar-light bg-light fs-5">
+      <div class="container-fluid">
+         <div class="container w-85">
+            <a class="navbar-brand" href="Home.html">
+               <img src="img/logo.png" alt="logo" class="d-inline-block align-text-top  w-28">
+            </a>
+         </div>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+               <li class="nav-item px-3"> <a class="nav-link" aria-current="page" href="Home.html">Home</a>
+               </li>
+               <li class="nav-item px-3"> <a class="nav-link" href="Gallery.html">Gallery</a>
+               </li>
+               <li class="nav-item px-3"> <a class="nav-link" id="myRagister">Ragister</a>
+               </li>
+               <li class="nav-item px-3"> <a class="nav-link" href="Login.html">Login</a>
+               </li>
+               <li class="nav-item px-3"> <a class="nav-link" href="About.html">About</a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+   <div id="myModal" class="modal">
+      <div class="modal-content"> <span class="close text-end">&times;</span>
+         <div class="container" id="demo">
+            <div class="m-a  col-10">
+               <div class="text-center d-block">
+                  <p class="text-left fs-3 text-dark">Sign in with</p> <a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fs-3 text-primary px-2 cursor"></i></a>
+                  <a href="mailto:kishansavaliya9083@gmail.com" target="_blank"><i
+                        class="fa fa-envelope fs-3 text-primary px-2 cursor"></i></a>
+                  <a href="https://www.facebook.com/" target="_blank"><i
+                        class="fa fa-facebook-square fs-3 text-primary px-2 cursor"></i></a>
+               </div>
+               <div class="col-12 mt-3">
+                  <h2 class="text-center">Ragister with email</h2>
+               </div>
+               <form class="container" id="needs-validation" method="post" autocomplete="off" name="google-sheet">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="form-group ">
+                           <label class="text-inverse" for="Name"></label>
+                           <input type="text" name="Name" class="form-control" id="Name" placeholder="Enter Full Name" required>
+                        </div>
+                     </div>
+                     <div class="col-lg-12">
+                        <div class="form-group ">
+                           <label class="text-inverse" for="Email"></label>
+                           <input type="email" name="Email" class="form-control" id="Email" placeholder="Email" required>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="form-group ">
+                           <label class="text-inverse" for="Phone"></label>
+                           <input type="text" name="Phone" class="form-control" id="Phone" placeholder="Enter Phone Number" maxlength="10" minlength="4" required>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="form-group">
+                           <div class="div50 pad10">
+                              <label class="text-inverse" for="city"></label>
+                              <input type="text" name="city" class="form-control" id="city" placeholder="Enter city" required>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="form-group">
+                           <div class="div50 pad10">
+                              <div class="form-check mt-4 ">
+                                 <input class="form-check-input cursor" type="checkbox" id="flexCheckDefault">
+                                 <label class="form-check-label cursor" for="flexCheckDefault">I agree all statements in Terms of service</label>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class=" col-12 text-end mt-4">
+                        <button class="btn btn-primary btn-md me-md-2" type="submit">Ragister</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- navbar end -->
+   <!-- login from start -->
+   <div class="full-screen-container mb-5">
+      <div class="login-container">
+         <h3 class="login-title">Welcome</h3>
+         <form name="myform" onsubmit="return validateform()">
+            <div class="input-group">
+               <label for="name">User Name</label>
+               <input type="text" id="name" name="name" placeholder="Enter User Name....">
+            </div>
+            <div class="input-group">
+               <label for="password">Password</label>
+               <input type="password" id="password" name="password" placeholder="Enter Password...." />
+            </div>
+            <input type="submit" id="btn" class="login-button" value="Sign In">
+         </form>
+      </div>
+   </div>
+   <!-- login from end -->
+   <div>
+      <h1 class="text-center fs-3">Energy Solar Privat company</h1>
+      <div class="container d-flex comapny">
+         <div class="text-center px-4  text-dark w-5 p-5 ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi finibus posuere justo, eu interdum massa elementum ut. Aenean et urna posuere, fermentum sapien at, pharetra velit. Duis dapibus, nulla vel imperdiet placerat, ex nisi bibendum purus, sed convallis eros erat et neque. Vivamus finibus nisi quam, et condimentum ante pulvinar a. Aenean molestie nisl a rhoncus egestas.</div>
+         <div class="text-center px-4  text-dark w-5 p-5 pt">Nulla hendrerit dignissim lacus vitae tempor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum rhoncus blandit metus, a feugiat sapien scelerisque ac. Nullam nec nunc id eros interdum facilisis sed eleifend mi. Curabitur tempus pretium ex, sit amet scelerisque lacus efficitu.</div>
+      </div>
+   </div>
+   <!-- backgroung img start -->
+   <div class="backgrund">
+      <div class="contain d-flex align-items-center flex-column justify-content-center">
+         <h1 class="text-center text-light w-1">Click This File </h1>
+         <div> <a href="index.xml" class="btn-1 button my-3">XML File</a>
+            <button class="btn-1 button mx-3" onclick="jsonclick()"><span>Json file</span>
+            </button>
+         </div>
+      </div>
+   </div>
+   <!-- backgroung img end -->
+   <!-- btn top start -->
+   <div class="backtotop">
+      <button class="btn btn-secondary" onclick="toptoup()" id="myBtn"><i class="fa fa-arrow-circle-up text-light  fs-3"></i>
+      </button>
+   </div>
+   <!-- btn top end -->
+   <!-- footer start -->
+   <div class="container-fluid navbar-light">
+      <footer class="d-flex flex-wrap justify-content-between  align-items-center py-3 mt-4 ">
+         <div class="col-md-4 d-flex align-items-center"> <span class="text-dark">&copy; 2021 Company, Inc<br>Energy Solar Privat company</span>
+         </div>
+         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a class="text-muted" href="https://www.instagram.com/"><i
+                     class="fa fa-instagram fs-3 text-dark   px-2 cursor"></i></a>
+            </li>
+            <li class="ms-3"><a class="text-muted" href="mailto:kishansavaliya9083@gmail.com"><i
+                     class="fa fa-envelope fs-3 text-dark  px-2 cursor"></i></a>
+            </li>
+            <li class="ms-3"><a class="text-muted" href="https://www.facebook.com/"><i
+                     class="fa fa-facebook-square fs-3 text-dark px-2 cursor"></i></a>
+            </li>
+         </ul>
+      </footer>
+   </div>
+   <!-- footer end -->
+   <script>
+      function jsonclick() {
+               alert("Click F12 and click console check!");
+            }
+   </script>
+   <script>
+      var a = {
+               "solar": [
+                  {
+                     "model": "Electronic Solar",
+                     "price": 69000,
+                     "description": "DIY Square shape 6V 100MA MINI"
+                  },
+                  {
+                     "model": "Polycrystalline Solar Panel",
+                     "price": 29000,
+                     "description": "Adani 340W 24V "
+                  }
+               ],
+               "Customer": [
+                  {
+                     "cust.no": 1,
+                     "cust.name": "Manubhai",
+                     "cust.address": "Mumbai"
+                  },
+                  {
+                     "cust.no": 2,
+                     "cust.name": "kanjibhai",
+                     "cust.address": "bengaluru"
+                  },
+                  {
+                     "cust.no": 3,
+                     "cust.name": "Dalshukha bhai",
+                     "cust.address": "pune"
+                  }
+               ]
+            }
+            console.log(a);
+   </script>
+   <script>
+      // Get the modal
+            var modal = document.getElementById("myModal");
+      
+            // Get the button that opens the modal
+            var btn = document.getElementById("myRagister");
+      
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+      
+            var click = document.getElementById("modal-content");
+            // When the user clicks the button, open the modal  
+            btn.onclick = function () {
+               modal.style.display = "block";
+            }
+      
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+               modal.style.display = "none";
+            }
+      
+            // When the user clicks anywhere outside of the modal, close it
+            modal.onclick = function (event) {
+               if (event.target == modal) {
+                  modal.style.display = "none";
+               }
+            }
+   </script>
+   <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzoSGzk3ZryXeocgdusauEpqYRFmHhrOU48TU3fhtiJKVHnLXmy5jOZKtKXGiCq4C5V/exec'
+            const form = document.forms['google-sheet']
+      
+            form.addEventListener('submit', e => {
+             e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Your Ragister successfully."))
+            .catch(error => console.error('Error!', error.message))
+            })
+   </script>
+   <script>
+      var backtotop = document.getElementById("myBtn");
+      
+            window.onscroll = function () { scrollFunction() };
+      
+            function scrollFunction() {
+               if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                  backtotop.style.display = "block";
+               }
+               else {
+                  backtotop.style.display = "none";
+               }
+            }
+      
+            function toptoup() {
+               document.body.scrollTop = 0;
+               document.documentElement.scrollTop = 0;
+            }
+   </script>
+   <script>
+      function validateform(){
+               var name = document.myform.name.value;
+               var password = document.myform.password.value;
+      
+               console.log(name);
+               if(name ==""){
+                  alert("Name can't be blank");
+                  return false;
+               }else if(password == ""){
+                  alert("password can't be blank");
+                  return false;
+               }
+               else if(password.length<6){
+                  alert("Password must be at least 6 characters long");
+                  return false;
+               }
+            }
+   </script>
+</body>
+
+</html>

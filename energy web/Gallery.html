@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Gallery</title>
+   <link rel="stylesheet" type="text/css" href="css/style.css">
+   <link rel="icon" type="image/x-icon" href="img/logo.png">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <style>
+      body {
+         margin: 0;
+         font-family: 'Roboto Slab', serif !important;
+      }
+
+      a img {
+         width: 13%;
+         height: auto;
+      }
+
+      .nav-link {
+         color: black !important;
+      }
+
+      .nav-link:hover {
+         color: #0a58ca !important;
+      }
+
+      .navbar-light {
+         background-color: #d4d5d5 !important;
+      }
+
+      .modal {
+         display: none;
+         position: fixed;
+         z-index: 1;
+         padding-top: 3px;
+         width: 100%;
+         overflow: auto;
+         background-color: rgb(0 0 0 / 53%);
+      }
+
+      .modal-content {
+         background-color: #fefefe;
+         margin: auto;
+         padding: 20px;
+         border: 1px solid #888;
+         width: 40%;
+      }
+
+      .close {
+         color: #aaaaaa;
+         float: right;
+         font-size: 28px;
+         font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+         color: #000;
+         text-decoration: none;
+         cursor: pointer;
+      }
+
+      .m-a {
+         margin: 0 auto;
+      }
+
+      .cursor {
+         cursor: pointer;
+      }
+
+      .gallery-container p.page-description {
+         text-align: center;
+         margin: 25px auto;
+         font-size: 18px;
+         color: #999;
+      }
+
+      .tz-gallery .row>div {
+         padding: 5px;
+      }
+
+      .tz-gallery img {
+         width: 100%;
+         border-radius: 0;
+         position: relative;
+      }
+
+      .w-6 {
+         height: 250px;
+         object-fit: cover;
+      }
+
+      .p-r {
+         position: relative;
+      }
+
+      .box {
+         width: 370px;
+         background-color: #00000091;
+         position: absolute;
+         bottom: 4px;
+         text-align: left;
+         height: 140px;
+         padding: 15px;
+         color: white;
+         font-weight: bolder;
+         font-family: monospace;
+         display: none;
+      }
+
+      i.fa.fa-long-arrow-right {
+         font-size: 24px;
+         background-color: white;
+         width: 13%;
+         padding: 4px;
+         text-align: center;
+         color: black;
+         border-radius: 13%;
+      }
+
+      .about-section {
+         background-image: url("img/bg.jpg");
+         background-size: cover;
+         background-repeat: no-repeat;
+         background-attachment: fixed;
+         padding: 150px 0;
+         text-align: center;
+         background-color: #474e5d;
+         color: white;
+         box-shadow: 0px 10px 20px #0080b9f0;
+      }
+
+      .backtotop {
+         position: fixed;
+         right: 30px;
+         bottom: 65px;
+         opacity: 0.8;
+      }
+
+      @media only screen and (max-width: 768px) {
+         .modal-content {
+            width: 100%;
+         }
+
+         .w-85 {
+            width: 80%;
+            margin: 0;
+            padding: 0;
+         }
+
+         .w-28 {
+            width: 26%;
+         }
+
+         .navbar-nav {
+            align-items: center;
+         }
+
+         .box {
+            width: 381px;
+         }
+
+         .p-r {
+            width: 95%;
+            margin: 0 auto;
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <nav class="navbar navbar-expand-lg navbar-light bg-light fs-5">
+      <div class="container-fluid">
+         <div class="container w-85">
+            <a class="navbar-brand" href="Home.html">
+               <img src="img/logo.png" alt="logo" class="d-inline-block align-text-top  w-28">
+            </a>
+         </div>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span
+               class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+               <li class="nav-item px-3"> <a class="nav-link" aria-current="page" href="Home.html">Home</a>
+               </li>
+               <li class="nav-item px-3"> <a class="nav-link" href="Gallery.html">Gallery</a>
+               </li>
+               <li class="nav-item px-3"> <a class="nav-link" id="myRagister">Ragister</a>
+               </li>
+               <li class="nav-item px-3"> <a class="nav-link" href="Login.html">Login</a>
+               </li>
+               <li class="nav-item px-3"> <a class="nav-link" href="About.html">About</a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+   <div id="myModal" class="modal">
+      <div class="modal-content"> <span class="close text-end">&times;</span>
+         <div class="container" id="demo">
+            <div class="m-a  col-10">
+               <div class="text-center d-block">
+                  <p class="text-left fs-3 text-dark">Sign in with</p> <a href="https://www.instagram.com/"
+                     target="_blank"><i class="fa fa-instagram fs-3 text-primary px-2 cursor"></i></a>
+                  <a href="mailto:kishansavaliya9083@gmail.com" target="_blank"><i
+                        class="fa fa-envelope fs-3 text-primary px-2 cursor"></i></a>
+                  <a href="https://www.facebook.com/" target="_blank"><i
+                        class="fa fa-facebook-square fs-3 text-primary px-2 cursor"></i></a>
+               </div>
+               <div class="col-12 mt-3">
+                  <h2 class="text-center">Ragister with email</h2>
+               </div>
+               <form class="container" id="needs-validation" method="post" autocomplete="off" name="google-sheet">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="form-group ">
+                           <label class="text-inverse" for="Name"></label>
+                           <input type="text" name="Name" class="form-control" id="Name" placeholder="Enter Full Name"
+                              required>
+                        </div>
+                     </div>
+                     <div class="col-lg-12">
+                        <div class="form-group ">
+                           <label class="text-inverse" for="Email"></label>
+                           <input type="email" name="Email" class="form-control" id="Email" placeholder="Email"
+                              required>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="form-group ">
+                           <label class="text-inverse" for="Phone"></label>
+                           <input type="text" name="Phone" class="form-control" id="Phone"
+                              placeholder="Enter Phone Number" maxlength="10" minlength="4" required>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="form-group">
+                           <div class="div50 pad10">
+                              <label class="text-inverse" for="city"></label>
+                              <input type="text" name="city" class="form-control" id="city" placeholder="Enter city"
+                                 required>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="form-group">
+                           <div class="div50 pad10">
+                              <div class="form-check mt-4 ">
+                                 <input class="form-check-input cursor" type="checkbox" id="flexCheckDefault">
+                                 <label class="form-check-label cursor" for="flexCheckDefault">I agree all statements in
+                                    Terms of service</label>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class=" col-12 text-end mt-4">
+                        <button class="btn btn-primary btn-md me-md-2" type="submit">Ragister</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="about-section mb-5">
+      <h1>Gallery</h1>
+      <p>Some image for ouer enviromrnt.</p>
+   </div>
+   <h1 class="text-dark fs-3 text-center pb-3">Gallery</h1>
+   <div class="container p-a gallery-container">
+      <div class="tz-gallery">
+         <div class="row">
+            <div class="col-sm-12 col-md-4 p-r">
+               <img src="img/gellaryno1.jpg" alt="Solar penal" class="w-6" id="click">
+               <div class="container box" id="box">
+                  <p>Enviroment</p>
+                  <p>Commercial Solar Inspections</p> <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+               </div>
+            </div>
+            <div class="col-sm-6 col-md-4 p-r">
+               <img src="img/gellaryno2.jpg" alt="Solar penal" class="w-6" id="click1">
+               <div class="container box" id="box1">
+                  <p>Enviroment</p>
+                  <p>Commercial Solar Inspections</p> <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+               </div>
+            </div>
+            <div class="col-sm-6 col-md-4 p-r">
+               <img src="img/gellaryno3.jpg" alt="Solar penal" class="w-6" id="click2">
+               <div class="container box" id="box2">
+                  <p>Enviroment</p>
+                  <p>Commercial Solar Inspections</p> <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+               </div>
+            </div>
+            <div class="col-sm-6 col-md-4 p-r">
+               <img src="img/gellaryno4.jpg" alt="Solar penal" class="w-6" id="click3">
+               <div class="container box" id="box3">
+                  <p>Enviroment</p>
+                  <p>Commercial Solar Inspections</p> <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+               </div>
+            </div>
+            <div class="col-sm-6 col-md-4 p-r">
+               <img src="img/gellaryno5.jpg" alt="Solar penal" class="w-6" id="click4">
+               <div class="container box" id="box4">
+                  <p>Enviroment</p>
+                  <p>Commercial Solar Inspections</p> <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+               </div>
+            </div>
+            <div class="col-sm-6 col-md-4 p-r">
+               <img src="img/gellaryno6.jpg" alt="Solar penal" class="w-6" id="click5">
+               <div class="container box" id="box5">
+                  <p>Enviroment</p>
+                  <p>Commercial Solar Inspections</p> <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+               </div>
+            </div>
+            <div class="col-sm-6 col-md-4 p-r">
+               <img src="img/gellaryno7.jpg" alt="Solar penal" class="w-6" id="click6">
+               <div class="container box" id="box6">
+                  <p>Enviroment</p>
+                  <p>Commercial Solar Inspections</p> <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+               </div>
+            </div>
+            <div class="col-sm-6 col-md-4 p-r">
+               <img src="img/gellaryno8.jpg" alt="Solar penal" class="w-6" id="click7">
+               <div class="container box" id="box7">
+                  <p>Enviroment</p>
+                  <p>Commercial Solar Inspections</p> <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+               </div>
+            </div>
+            <div class="col-sm-6 col-md-4 p-r">
+               <img src="img/gellaryno9.jpg" alt="gellaryno" class="w-6" id="click8">
+               <div class="container box" id="box8">
+                  <p>Enviroment</p>
+                  <p>Commercial Solar Inspections</p> <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="backtotop">
+      <button class="btn btn-secondary" onclick="toptoup()" id="myBtn"><i
+            class="fa fa-arrow-circle-up text-light  fs-3"></i>
+      </button>
+   </div>
+   <div class="container-fluid navbar-light m-0 ">
+      <footer class="d-flex flex-wrap justify-content-between  align-items-center py-3 mt-4 border-top">
+         <div class="col-md-4 d-flex align-items-center"> <span class="text-dark">&copy; 2021 Company, Inc<br>Energy
+               Solar Privat company</span>
+         </div>
+         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a class="text-muted" href="https://www.instagram.com/"><i
+                     class="fa fa-instagram fs-3 text-dark   px-2 cursor"></i></a>
+            </li>
+            <li class="ms-3"><a class="text-muted" href="mailto:kishansavaliya9083@gmail.com"><i
+                     class="fa fa-envelope fs-3 text-dark  px-2 cursor"></i></a>
+            </li>
+            <li class="ms-3"><a class="text-muted" href="https://www.facebook.com/"><i
+                     class="fa fa-facebook-square fs-3 text-dark px-2 cursor"></i></a>
+            </li>
+         </ul>
+      </footer>
+   </div>
+   <script>
+      $(document).ready(function () {
+         $("#click").click(function () {
+            $("#box").slideToggle(500);
+         });
+         $("#click1").click(function () {
+            $("#box1").slideToggle(500);
+         });
+         $("#click2").click(function () {
+            $("#box2").slideToggle(500);
+         });
+         $("#click3").click(function () {
+            $("#box3").slideToggle(500);
+         });
+         $("#click4").click(function () {
+            $("#box4").slideToggle(500);
+         });
+         $("#click5").click(function () {
+            $("#box5").slideToggle(500);
+         });
+         $("#click6").click(function () {
+            $("#box6").slideToggle(500);
+         });
+         $("#click7").click(function () {
+            $("#box7").slideToggle(500);
+         });
+         $("#click8").click(function () {
+            $("#box8").slideToggle(500);
+         });
+      });
+   </script>
+   <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("myRagister");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      var click = document.getElementById("modal-content");
+      // When the user clicks the button, open the modal  
+      btn.onclick = function () {
+         modal.style.display = "block";
+      }
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+         modal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      modal.onclick = function (event) {
+         if (event.target == modal) {
+            modal.style.display = "none";
+         }
+      }
+   </script>
+   <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzoSGzk3ZryXeocgdusauEpqYRFmHhrOU48TU3fhtiJKVHnLXmy5jOZKtKXGiCq4C5V/exec'
+      const form = document.forms['google-sheet']
+
+      form.addEventListener('submit', e => {
+         e.preventDefault()
+         fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => alert("Your Ragister successfully."))
+            .catch(error => console.error('Error!', error.message))
+      })
+   </script>
+      
+</body>
+
+</html>

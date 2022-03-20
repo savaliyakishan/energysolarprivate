@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<solar>
+	<solarpenaldetail>
+		<solarpenal>
+			<modelname>Electronic Solar</modelname>
+			<modelprice>₹69000</modelprice>
+			<modelDetail>DIY Square shape 6V 100MA MINI</modelDetail>
+		</solarpenal>
+		<solarpenal>
+			<modelname>Polycrystalline Solar Panel</modelname>
+			<modelprice>₹25000</modelprice>
+			<modelDetail>Adani 340W 24V</modelDetail>
+		</solarpenal>
+	</solarpenaldetail>
+	<solarCustomerDetail>
+		<Customer>
+			<cust.no>01</cust.no>
+			<cust.name>Manubhai</cust.name>
+			<Cust.address>Mumbai</Cust.address>
+		</Customer>
+		<Customer>
+			<cust.no>02</cust.no>
+			<cust.name>kanjibhai</cust.name>
+			<Cust.address>bengaluru</Cust.address>
+		</Customer>
+		<Customer>
+			<cust.no>03</cust.no>
+			<cust.name>Dalshukha bhai</cust.name>
+			<Cust.address>pune</Cust.address>
+		</Customer>
+	</solarCustomerDetail>
+</solar>
